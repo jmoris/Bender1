@@ -1,0 +1,33 @@
+#include "opencv2/opencv.hpp"
+#include <stdio.h>
+int main(){
+char windowName_[] = "Ventana";
+cv::VideoCapture cap(0);
+cv::Mat src_;
+int vWidth_ = 640;
+int vHeight_ = 480;
+cv::Mat vImage_; 
+cap >> vImage_;
+if(src_)
+{
+    cv::Vec3f vec_;
+
+    for(int i = 0; i < vHeight_; i++)
+        for(int j = 0; j < vWidth_; j++)
+        {
+            vec_ = cv::Vec3f((*src_)[0]/255.0, (*src_)[1]/255.0, (*src_)[2]/255.0);//Please note that OpenCV store pixels as BGR.
+
+            vImage_.at<cv::Vec3f>(vHeight_-1-i, j) = vec_;
+
+            //src_++;
+        }
+}
+
+if(! vImage_.data ) // Check for invalid input
+    printf("failed to read image by OpenCV.");
+else
+{
+    cv::namedWindow( windowName_, CV_WINDOW_AUTOSIZE);
+    cv::imshow( windowName_, vImage_); // Show the image.
+}
+}

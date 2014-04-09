@@ -60,32 +60,32 @@ IplImage* GetThresholdedImage(IplImage* img)
 }
 
 void LimpiarX(double posx){
-	if(posX > 320){
-		x2 = 640 - posX;
-		x2 = 320 - x2;
-		x1 = 0;
-	}
-	if(posX < 320){
-		x1 = 320 - posX;
-		x2 = 0;
-	}
-	//Calculamos una constante respecto a la mitad de la pantalla, 1.028
-	if((x1*1.028) > 320){
-		x1=320;
-	}else{
-		x1=x1*1.028;
-	}
-	if((x2*1.028) > 320){
-		x2=320;
-	}else{
-		x2=x2*1.028;
-	}
-	if(x1 < 0){
-		x1 = 0;
-	}
-	if(x2 < 0){
-		x2 = 0;
-	}
+if(posX > 320){
+			x2 = 640 - posX;
+			x2 = 320 - x2;
+			x1 = 0;
+		}
+		if(posX < 320){
+			x1 = 320 - posX;
+			x2 = 0;
+		}
+		//Calculamos una constante respecto a la mitad de la pantalla, 1.028
+		if((x1*1.028) > 320){
+			x1=320;
+		}else{
+			x1=x1*1.028;
+		}
+		if((x2*1.028) > 320){
+			x2=320;
+		}else{
+			x2=x2*1.028;
+		}
+		if(x1 < 0){
+			x1 = 0;
+		}
+		if(x2 < 0){
+			x2 = 0;
+		}
 }
 
 int main()
@@ -124,7 +124,7 @@ int main()
 		CvMoments *moments = (CvMoments*)malloc(sizeof(CvMoments));
 		cvMoments(Linea, moments, 1);
 
-		// Valores actualesmi del momento
+		// Valores actuales del momento
 		double moment10 = cvGetSpatialMoment(moments, 1, 0); // X 
 		double area = cvGetCentralMoment(moments, 0, 0); // Centro
 
